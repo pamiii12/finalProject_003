@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+/// \brief  class utama untuk mata kuliah
 class MataKuliah {
 private:
 	float presensi;
@@ -9,25 +9,29 @@ private:
 	float tugasAkhir;
 
 public:
+	/// \brief Konstruktor untuk inisialisasi nilai awal.
 	MataKuliah() {
 		presensi = 0;
 		activity = 0;
 		exercise = 0;
 		tugasAkhir = 0;
 	}
-
+	/// \brief menghitung nilai akhir .
 	virtual float hitungNilaiAkhir() { return 0;}
+	/// \brief Memeriksa kelulusan dalam mata kuliah (didefinisikan oleh kelas turunan).
 	virtual void cekKelulusan() { 
 		return;
 	}
+	/// \brief Mengambil input nilai dari pengguna(didefinisikan oleh kelas turunan).
 	virtual void input() { 
 		return; 
 	}
 
+	/// \brief Mengatur nilai presensi.
 	void setPresensi(float nilai) {
 		this->presensi = nilai;
 	}
-
+	/// \brief Mengambil nilai presensi.
 	float getPresensi() {
 		return presensi;
 	}
@@ -61,8 +65,11 @@ public:
 
 };
 
+/// \brief  Kelas turunan dari MataKuliah untuk mata kuliah pemrograman.	
 class Pemrograman : public MataKuliah {
 	 // isi disini
+
+	/// \brief Mengambil input nilai dari pengguna untuk mata kuliah pemrograman.
 	void input() {
 		int p, a, e, ua;
 
@@ -79,16 +86,19 @@ class Pemrograman : public MataKuliah {
 		cout << "Masukkan nilai Tugas Akhir : \n";
 		cin >> ua;
 		setUA(ua);
-	}
+	}     
+	/// \brief Menghitung nilai akhir mata kuliah pemrograman(override dari kelas induk).
 	float hitungNilaiAkhir() {
 
 	}
+	/// \brief Memeriksa kelulusan mata kuliah pemrograman(override dari kelas induk).
 	void cekKelulusan() {
 
 	}
 	
 };
 
+/// \brief Fungsi utama program.
 int main() {
 	//isi disini
 	char ch;
@@ -99,9 +109,6 @@ int main() {
 
 		mk = &p;
 		mk->input();
-		int rata_rata;
-
-
 
 		cout << "\nApakah anda ingin mengulang program?  Y/N\n";
 		cin >> ch;
